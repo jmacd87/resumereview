@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import login from './components/login/login';
+import register from './components/login/register';
+import profile from './components/Profile';
+import home from './components/Homepage'
+import recipes from './components/Recipes'
+import { Provider } from 'react-redux'
+import store from './store'
+import './App.css'
+import Header from './components/Header'
+import { loadUser } from './actions/authActions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  async componentDidMount() {
+
+    store.dispatch(loadUser())
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <Router>
+            <Header />
+            <Route path="/sign-in" component={login} />
+            <Route path="/sign-up" component={register} />
+            <Route path="/profile" component={profile} />
+            <Route exact path="/" component={home} />
+            <Route path="/search" component={home} />
+            <Route path="/recipes" component={recipes} />
+          </Router>
+        </div>
+      </Provider>
+    )
+  }
 }
 
-export default App;
+
+export default App
