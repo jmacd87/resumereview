@@ -19,9 +19,12 @@ export default function (state = initialState, action) {
                 loading: false
             };
         case DELETE_RECIPE:
+            console.log('state rec', state.recipes)
             return {
                 ...state,
-                recipes: state.recipes.filter(recipe => recipe._id !== action.payload)
+                recipes: state.recipes.filter(recipe => recipe._id === action.payload)
+
+
             };
         case ADD_RECIPE:
             return {

@@ -51,7 +51,7 @@ const Search = () => {
             {props => <div className="recipes" style={props}>
                 {recipes.map(recipe => (
                     <Recipe
-                        key={recipe.recipe.image}
+                        key={Math.random()}
                         title={recipe.recipe.label}
                         calories={recipe.recipe.calories}
                         image={recipe.recipe.image}

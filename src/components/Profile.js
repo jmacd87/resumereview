@@ -13,13 +13,12 @@ class Profile extends React.Component {
 
 
     render() {
-        const { isAuthenticated, user } = this.props.auth
+        const { user } = this.props.auth
         let dateString
         if (user) {
             const date = user.created
             dateString = moment(date).format("MMMM YYYY")
         }
-        console.log('isauth', isAuthenticated)
         return (<Spring
             from={{ opacity: 0, marginTop: 1500 }}
             to={{ opacity: 1, marginTop: 0 }}

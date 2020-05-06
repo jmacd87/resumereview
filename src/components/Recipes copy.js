@@ -6,33 +6,54 @@ import Loader from 'react-loader-spinner'
 import { Spring } from 'react-spring/renderprops'
 import PropTypes from 'prop-types'
 import { getRecipes } from '../actions/recipeActions'
-
+import axios from 'axios';
 class Recipes extends React.Component {
-
+    constructor() {
+        super()
+        this.state = {
+            recipes: [],
+            isLoaded: false,
+            msg: null
+        }
+    }
     static propTypes = {
-        getRecipes: PropTypes.func.isRequired,
-        recipe: PropTypes.object.isRequired,
         isAuthenticated: PropTypes.bool
-    };
-    async componentDidMount() {
-
-        await this.props.getRecipes()
+    }
+    componentDidMount = () => {
+        this.getAllRecipes()
     }
 
+    getAllRecipes = async () => {
+        this.setState({ isLoaded: false })
+        await axios
+            .get('http://localhost:5000/recipes/')
+            .then(res => {
+                this.setState({ recipes: res.data, isLoaded: true })
+                console.log('loaded')
+                console.log('recipes', this.state.recipes)
+            })
+            .catch(err => {
+                console.log(err + 'what')
+                this.setState({ isLoaded: true })
+            })
+        if (this.state.recipes.length === 0) {
+            console.log('ERRO MSG')
+            this.setState({ msg: 'Please add a recipe to view', isLoaded: true })
+        }
+    }
     render() {
-        const { recipes } = this.props.recipe
-
+        console.log('msg', this.state.msg)
+        console.log('recipes', this.state.recipes)
         let content
-
-        if (!this.props.loading && recipes) {
+        if (this.state.isLoaded) {
             content = <Spring
                 from={{ opacity: 0, marginTop: 1500 }}
                 to={{ opacity: 1, marginTop: 0 }}
             >
                 {props => <div className="recipes" style={props} >
-                    {recipes.map(recipe => (
+                    {this.state.recipes.map(recipe => (
                         <Recipe
-                            key={recipe._id}
+                            key={recipe.image}
                             id={recipe._id}
                             title={recipe.title}
                             calories={recipe.calories}
@@ -52,6 +73,10 @@ class Recipes extends React.Component {
                     timeout={3000} />
             </div>
         }
+        if (this.state.isLoaded && this.state.msg) {
+            console.log('msg', this.state.msg)
+            content = <h1 className='errorMessage'>{this.state.msg}</h1>
+        }
 
 
         return (
@@ -66,16 +91,11 @@ class Recipes extends React.Component {
 }
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    recipe: state.recipe,
-    loading: state.recipe.loading
 })
 export default connect(
     mapStateToProps,
     { getRecipes }
 )(Recipes)
-
-
-
 // const Recipes = () => {
 //     const [recipes, setRecipes] = useState([])
 //     const [isLoaded, setIsLoaded] = useState(false)

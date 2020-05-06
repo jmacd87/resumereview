@@ -4,7 +4,7 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 export const getRecipes = () => (dispatch) => {
-    dispatch(setRecipesLoading());
+    // dispatch(setRecipesLoading());
     axios
         .get('http://localhost:5000/recipes')
         .then(res =>
