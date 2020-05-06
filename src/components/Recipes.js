@@ -18,6 +18,9 @@ class Recipes extends React.Component {
 
         await this.props.getRecipes()
     }
+    async componentDidUpdate() {
+        await this.props.getRecipes()
+    }
 
     render() {
         const { recipes } = this.props.recipe
@@ -52,7 +55,9 @@ class Recipes extends React.Component {
                     timeout={3000} />
             </div>
         }
-
+        if (!this.props.loading && recipes.length === 0) {
+            content = <h1 className='errorMessage'>Add recipes to view here</h1>
+        }
 
         return (
             <div className="app" >
