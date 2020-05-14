@@ -1,10 +1,12 @@
 const router = require('express').Router()
 let Recipe = require('../models/recipe.model')
+let User = require('../models/user.model')
 const auth = require('../middleware/auth')
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-        const recipes = await Recipe.find();
+        const recipes = await Recipe.find({ user: req.params.id });
+
         if (!recipes) throw Error('No items');
 
         res.status(200).json(recipes);
@@ -44,15 +46,14 @@ router.post('/add', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
     console.log('route hit')
     try {
-        const recipe = await Recipe.findById(req.params.id);
-        console.log('finding recipe', recipe)
+        const recipe = await Recipe.findById(req.params.id)
         if (!recipe) throw Error('No recipefound');
-
         const removed = await Recipe.deleteOne(recipe);
         console.log('deleteing recipe', removed)
         if (!removed) throw Error('Something went wrong while trying to delete the recipe');
 
         res.status(200).json({ success: true });
+
     } catch (e) {
         res.status(400).json({ msg: e.message, success: false });
     }

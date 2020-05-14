@@ -13,6 +13,7 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_RECIPES:
+            console.log('action get recipes')
             return {
                 ...state,
                 recipes: action.payload,
@@ -22,7 +23,7 @@ export default function (state = initialState, action) {
             console.log('state rec', state.recipes)
             return {
                 ...state,
-                recipes: state.recipes.filter(recipe => recipe._id === action.payload)
+                recipes: state.recipes.filter(recipe => recipe._id !== action.payload)
 
 
             };

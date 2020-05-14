@@ -47,11 +47,7 @@ class LikeButton extends React.Component {
     }
     handleDislike = () => {
         const { id } = this.props
-
-
-        console.log('deleted2 recipe' + id)
         this.props.deleteRecipe(id)
-
 
     }
 

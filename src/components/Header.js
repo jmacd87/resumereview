@@ -3,13 +3,20 @@ import { Link, NavLink } from 'react-router-dom';
 import './header.scss'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
+import { getRecipes } from '../actions/recipeActions'
 
 class Header extends React.Component {
     static propTypes = {
-        auth: PropTypes.object.isRequired,
+        auth: PropTypes.object.isRequired
     }
+
     render() {
-        const { isAuthenticated } = this.props.auth
+        const { isAuthenticated, user } = this.props.auth
+        if (user) {
+            console.log('header user', user)
+            // const id = user._id
+            this.props.getRecipes(user)
+        }
         return (
             <div className='header'>
                 {isAuthenticated ?
@@ -43,4 +50,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, { getRecipes })(Header)

@@ -28,68 +28,37 @@ router.route('/add').post((req, res) => {
                 newUser.last_name = req.body.last_name,
                 newUser.email = req.body.email,
                 newUser.password = req.body.password,
+                newUser.recipes = []
 
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        // if (err) throw err;
-                        newUser.password = hash
-                        newUser.save()
-                            .then(user => {
-                                jwt.sign(
-                                    { id: user.id },
-                                    jwt_secretToken,
-                                    { expiresIn: 3600 },
-                                    (err, token) => {
-                                        if (err) throw err;
-                                        res.json({
-                                            token,
-                                            user: {
-                                                id: user.id,
-                                                email: user.email
-                                            }
-                                        })
-                                    }
-                                )
-                            })
-                            .catch(err => res.status(400).json('Error: ' + err))
-                    })
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    // if (err) throw err;
+                    newUser.password = hash
+                    newUser.save()
+                        .then(user => {
+                            jwt.sign(
+                                { id: user.id },
+                                jwt_secretToken,
+                                { expiresIn: 3600 },
+                                (err, token) => {
+                                    if (err) throw err;
+                                    res.json({
+                                        token,
+                                        user: {
+                                            id: user.id,
+                                            email: user.email,
+                                            first_name: user.first_name,
+                                            last_name: user.last_name
+                                        }
+                                    })
+                                }
+                            )
+                        })
+                        .catch(err => res.status(400).json('Error: ' + err))
                 })
+            })
         })
 })
-
-// router.route('/login').post((req, res) => {
-//     const { email, password } = req.body
-
-//     if (!email || !password) {
-//         return res.status(400).json({ msg: 'Please enter all fields' })
-//     }
-//     User.findOne({ email })
-//         .then(user => {
-//             if (!user) return res.status(400).json({ msg: 'User Does not exist' })
-
-//             // validate password
-//             bcrypt.compare(password, user.password)
-//                 .then(isMatch => {
-//                     if (!isMatch) return res.status(400).json({ msg: 'Invalid Password' })
-//                     jwt.sign(
-//                         { id: user.id },
-//                         jwt_secretToken,
-//                         { expiresIn: 3600 },
-//                         function (err, token) {
-//                             if (err) throw (err + 'cant sign');
-//                             res.json({
-//                                 token,
-//                                 user: {
-//                                     id: user.id,
-//                                     email: user.email
-//                                 }
-//                             })
-//                         }
-//                     )
-//                 })
-//                 .catch(err => res.status(400).json('Error: ' + err + 'cant compare'))
-//         })
-// })
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;

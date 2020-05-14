@@ -4,6 +4,7 @@ import './login.scss'
 import { Spring } from 'react-spring/renderprops'
 import { login } from '../../actions/authActions'
 import { connect } from 'react-redux'
+import Loader from 'react-loader-spinner'
 import PropTypes from 'prop-types'
 
 class Login extends Component {
@@ -12,7 +13,8 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            msg: null
+            msg: null,
+            isLoading: false
         }
     }
     static propTypes = {
@@ -54,6 +56,7 @@ class Login extends Component {
             password
         }
         console.log(user)
+        this.setState({ isLoading: true })
         this.props.login(user)
         this.setState({
             email: '',
@@ -62,44 +65,54 @@ class Login extends Component {
     }
 
     render() {
-
-
         return (
             <Spring
                 from={{ opacity: 0, marginTop: -200 }}
                 to={{ opacity: 1, marginTop: 0 }}
             >
                 {props =>
+
                     <div className="AuthForm">
                         <div className="App__Aside"></div>
-                        <div className="App__Form">
-                            <div className="PageSwitcher">
-                                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                                <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
-                            </div>
-                            <div className="FormCenter" style={props}>
-                                <div className="FormTitle">
-                                    <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
+                        {!this.state.isLoading ?
+                            <div className="App__Form">
+                                <div className="PageSwitcher">
+                                    <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+                                    <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
                                 </div>
-                                <form onSubmit={this.handleSubmit} className="FormFields">
-                                    {this.state.msg ? <div className='Error__Message'>Error: {this.state.msg}</div> : null}
-                                    <div className="FormField">
-                                        <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                                        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                                <div className="FormCenter" style={props}>
+                                    <div className="FormTitle">
+                                        <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
                                     </div>
+                                    <form onSubmit={this.handleSubmit} className="FormFields">
+                                        {this.state.msg ? <div className='Error__Message'>Error: {this.state.msg}</div> : null}
+                                        <div className="FormField">
+                                            <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
+                                            <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                                        </div>
 
-                                    <div className="FormField">
-                                        <label className="FormField__Label" htmlFor="password">Password</label>
-                                        <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-                                    </div>
+                                        <div className="FormField">
+                                            <label className="FormField__Label" htmlFor="password">Password</label>
+                                            <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+                                        </div>
 
-                                    <div className="FormField">
-                                        <button className="FormField__Button mr-20">Sign In</button>
-                                    </div>
-                                </form>
+                                        <div className="FormField">
+                                            <button className="FormField__Button mr-20">Sign In</button>
+                                        </div>
+                                    </form>
+                                </div>
+
                             </div>
-                        </div>
+                            : <div className='errorMessage'>
+                                <Loader
+                                    type="ThreeDots"
+                                    color="rgb(214, 95, 95)"
+                                    height={100}
+                                    width={100}
+                                    timeout={3000} />
+                            </div>}
                     </div>
+
                 }
             </Spring>
         );
@@ -108,7 +121,8 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
+    error: state.error,
+    loading: state.auth.isLoading
 })
 export default connect(
     mapStateToProps,

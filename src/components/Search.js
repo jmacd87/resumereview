@@ -29,6 +29,9 @@ const Search = () => {
                 setSearch('')
                 setIsLoaded(true)
             }
+            if (query === 'asdf') {
+                setErrorMessage('')
+            }
 
         }
         getRecipes()
@@ -43,21 +46,24 @@ const Search = () => {
         setQuery(search)
     }
     let content
+
     if (isLoaded) {
         content = <Spring
             from={{ opacity: 0, marginTop: 1500 }}
             to={{ opacity: 1, marginTop: 0 }}
         >
-            {props => <div className="recipes" style={props}>
-                {recipes.map(recipe => (
-                    <Recipe
-                        key={Math.random()}
-                        title={recipe.recipe.label}
-                        calories={recipe.recipe.calories}
-                        image={recipe.recipe.image}
-                        ingredients={recipe.recipe.ingredients}
-                        liked={recipe.recipe.liked} />
-                ))}
+            {props => <div className="background">
+                <div className="recipes" style={props}>
+                    {recipes.map(recipe => (
+                        <Recipe
+                            key={Math.random()}
+                            title={recipe.recipe.label}
+                            calories={recipe.recipe.calories}
+                            image={recipe.recipe.image}
+                            ingredients={recipe.recipe.ingredients}
+                            liked={recipe.recipe.liked} />
+                    ))}
+                </div>
             </div>
             }
         </Spring>
@@ -76,6 +82,21 @@ const Search = () => {
 
         }
     }
+    if (!errorMessage && query === 'asdf') {
+        content = <Spring
+            from={{ opacity: 0, marginTop: 1500 }}
+            to={{ opacity: 1, marginTop: 0 }}
+        >
+            {props => <div style={props}>
+                <div className='searchLanding'>
+                    <img src="https://i2.wp.com/www.nutracart.com/wp-content/uploads/2019/01/Healthy-eating-icon.png?ssl=1" alt='' />
+                    <h1>Find your recipes now</h1>
+                    {/* <div className="color-overlay"></div> */}
+                </div>
+            </div>
+            }
+        </Spring>
+    }
 
     return (
         <div>
@@ -89,10 +110,9 @@ const Search = () => {
                     </div>
                 </form>
             </div>
-            <div className="background">
-                {content}
-            </div>
-        </div>
+
+            {content}
+        </div >
     )
 }
 export default Search

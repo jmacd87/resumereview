@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import * as moment from 'moment'
 import { logout } from '../actions/authActions'
+import { getRecipes } from '../actions/recipeActions'
 import { Spring } from 'react-spring/renderprops'
 
 class Profile extends React.Component {
@@ -18,6 +19,8 @@ class Profile extends React.Component {
         if (user) {
             const date = user.created
             dateString = moment(date).format("MMMM YYYY")
+            console.log('profile user', user)
+            this.props.getRecipes(user)
         }
         return (<Spring
             from={{ opacity: 0, marginTop: 1500 }}
@@ -54,4 +57,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logout })(Profile)
+export default connect(mapStateToProps, { logout, getRecipes })(Profile)
