@@ -15,7 +15,7 @@ class Header extends React.Component {
         if (user) {
             console.log('header user', user)
             // const id = user._id
-            this.props.getRecipes(user)
+            // this.props.getRecipes(user)
         }
         return (
             <div className='header'>
