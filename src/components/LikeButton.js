@@ -41,7 +41,6 @@ class LikeButton extends React.Component {
                 console.log('id', id)
                 const newRecipe = { title, ingredients, image, calories, user }
                 this.props.addRecipe(newRecipe)
-
             }
         )
     }
