@@ -12,7 +12,7 @@ class Recipes extends React.Component {
     static propTypes = {
         getRecipes: PropTypes.func.isRequired,
         loadUser: PropTypes.func.isRequired,
-        recipe: PropTypes.object,
+        recipe: PropTypes.array,
         auth: PropTypes.object,
     };
     componentDidMount() {
