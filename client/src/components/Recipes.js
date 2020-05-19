@@ -37,7 +37,7 @@ class Recipes extends React.Component {
                                 title={recipe.title}
                                 calories={recipe.calories}
                                 image={recipe.image}
-                                ingredients={recipe.ingredients}
+                                ingredients={Array.from(recipe.ingredients)}
                                 liked={true} />
                         ))}
                     </div>}
