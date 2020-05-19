@@ -7,7 +7,7 @@ export const getRecipes = id => (dispatch) => {
     dispatch(setRecipesLoading());
     console.log('getting recipes', id._id)
     axios
-        .get(`http://localhost:5000/recipes/` + id._id)
+        .get(`/recipes/` + id._id)
         .then(res =>
             dispatch({
                 type: GET_RECIPES,
@@ -21,7 +21,7 @@ export const getRecipes = id => (dispatch) => {
 
 export const addRecipe = recipe => (dispatch, getState) => {
     axios
-        .post('http://localhost:5000/recipes/add', recipe, tokenConfig(getState))
+        .post('/recipes/add', recipe, tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: ADD_RECIPE,
@@ -35,7 +35,7 @@ export const addRecipe = recipe => (dispatch, getState) => {
 
 export const deleteRecipe = (id) => (dispatch, getState) => {
     axios
-        .delete(`http://localhost:5000/recipes/${id}`, tokenConfig(getState))
+        .delete(`/recipes/${id}`, tokenConfig(getState))
         .then(res =>
             dispatch({
                 type: DELETE_RECIPE,
