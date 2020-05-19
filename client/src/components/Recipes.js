@@ -12,7 +12,7 @@ class Recipes extends React.Component {
     static propTypes = {
         getRecipes: PropTypes.func.isRequired,
         loadUser: PropTypes.func.isRequired,
-        recipe: PropTypes.object,
+        recipe: PropTypes.array,
         auth: PropTypes.object,
     };
     componentDidMount() {
@@ -22,7 +22,7 @@ class Recipes extends React.Component {
         const user = this.props.auth.user
         if (user) {
             const { recipes } = this.props.recipe
-
+            const recipesMap = Array.from(recipes)
             let content
             if (!this.props.loading && recipes) {
                 content = <Spring
@@ -30,7 +30,7 @@ class Recipes extends React.Component {
                     to={{ opacity: 1, marginTop: 0 }}
                 >
                     {props => <div className="recipes" style={props} >
-                        {recipes.map(recipe => (
+                        {recipesMap.map(recipe => (
                             <Recipe
                                 key={recipe._id}
                                 id={recipe._id}
