@@ -12,11 +12,7 @@ class Header extends React.Component {
 
     render() {
         const { isAuthenticated, user } = this.props.auth
-        if (user) {
-            console.log('header user2', user)
-            // const id = user._id
-            // this.props.getRecipes(user)
-        }
+
         return (
             <div className='header'>
                 {isAuthenticated ?

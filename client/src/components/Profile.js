@@ -3,7 +3,7 @@ import './profile.scss'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import * as moment from 'moment'
-import { logout } from '../actions/authActions'
+import { logout, loadUser } from '../actions/authActions'
 import { getRecipes } from '../actions/recipeActions'
 import { Spring } from 'react-spring/renderprops'
 
@@ -11,7 +11,9 @@ class Profile extends React.Component {
     static propTypes = {
         auth: PropTypes.object.isRequired,
     }
-
+    componentDidMount() {
+        this.props.loadUser()
+    }
 
     render() {
         const { user } = this.props.auth
@@ -57,4 +59,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logout, getRecipes })(Profile)
+export default connect(mapStateToProps, { logout, getRecipes, loadUser })(Profile)
