@@ -18,9 +18,10 @@ class Recipes extends React.Component {
 
     render() {
         const user = this.props.auth.user
+        let content
         if (user) {
             const { recipes } = this.props.recipe
-            let content
+
             if (this.props.loading) {
                 content = <div className='errorMessage'>
                     <Loader
