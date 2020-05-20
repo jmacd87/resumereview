@@ -17,41 +17,45 @@ class Recipes extends React.Component {
     };
 
     render() {
-        // const user = this.props.auth.user
-        const { recipes } = this.props.recipe
-        let content
-        if (this.props.loading) {
-            content = <div className='errorMessage'>
-                <Loader
-                    type="ThreeDots"
-                    color="rgb(214, 95, 95)"
-                    height={100}
-                    width={100}
-                    timeout={3000} />
-            </div>
-        }
+        const user = this.props.auth.user
+        if (user) {
+            const { recipes } = this.props.recipe
+            let content
+            if (this.props.loading) {
+                content = <div className='errorMessage'>
+                    <Loader
+                        type="ThreeDots"
+                        color="rgb(214, 95, 95)"
+                        height={100}
+                        width={100}
+                        timeout={3000} />
+                </div>
+            }
 
-        if (!this.props.loading && recipes) {
-            content = <Spring
-                from={{ opacity: 0, marginTop: 1500 }}
-                to={{ opacity: 1, marginTop: 0 }}
-            >
-                {props => <div className="recipes" style={props} >
-                    {recipes.map(recipe => (
-                        <Recipe
-                            key={recipe._id}
-                            id={recipe._id}
-                            title={recipe.title}
-                            calories={recipe.calories}
-                            image={recipe.image}
-                            ingredients={recipe.ingredients}
-                            liked={true} />
-                    ))}
-                </div>}
-            </Spring>
-        }
-        if (!this.props.loading && !recipes) {
-            content = <h1 className='errorMessage'>Add recipes to view here</h1>
+            if (!this.props.loading && recipes) {
+                content = <Spring
+                    from={{ opacity: 0, marginTop: 1500 }}
+                    to={{ opacity: 1, marginTop: 0 }}
+                >
+                    {props => <div className="recipes" style={props} >
+                        {recipes.map(recipe => (
+                            <Recipe
+                                key={recipe._id}
+                                id={recipe._id}
+                                title={recipe.title}
+                                calories={recipe.calories}
+                                image={recipe.image}
+                                ingredients={recipe.ingredients}
+                                liked={true} />
+                        ))}
+                    </div>}
+                </Spring>
+            }
+            if (!this.props.loading && !recipes) {
+                content = <h1 className='errorMessage'>Add recipes to view here</h1>
+            }
+        } else {
+            content = <h1>Please sign in to see recipes</h1>
         }
 
         return (
