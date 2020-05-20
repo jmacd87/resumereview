@@ -16,10 +16,7 @@ class Recipes extends React.Component {
         auth: PropTypes.object,
     };
     componentDidMount() {
-
         this.props.loadUser()
-        const user = this.props.auth.user
-        this.props.getRecipes(user)
     }
     render() {
         const user = this.props.auth.user
