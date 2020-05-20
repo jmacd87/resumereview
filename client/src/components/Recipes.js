@@ -15,9 +15,7 @@ class Recipes extends React.Component {
         recipe: PropTypes.array,
         auth: PropTypes.object,
     };
-    componentDidMount() {
-        this.props.loadUser()
-    }
+
     render() {
         const user = this.props.auth.user
         if (user) {
