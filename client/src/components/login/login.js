@@ -55,7 +55,7 @@ class Login extends Component {
             email,
             password
         }
-        console.log(user)
+
         this.setState({ isLoading: true })
         this.props.login(user)
         this.setState({

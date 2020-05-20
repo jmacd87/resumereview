@@ -40,7 +40,7 @@ class Register extends Component {
         }
 
         if (isAuthenticated) {
-            this.props.history.push('/')
+            this.props.history.push('/profile')
         }
     }
     handleChange(e) {
