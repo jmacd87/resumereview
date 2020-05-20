@@ -3,16 +3,13 @@ import './profile.scss'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import * as moment from 'moment'
-import { logout, loadUser } from '../actions/authActions'
+import { logout } from '../actions/authActions'
 import { getRecipes } from '../actions/recipeActions'
 import { Spring } from 'react-spring/renderprops'
 
 class Profile extends React.Component {
     static propTypes = {
         auth: PropTypes.object.isRequired,
-    }
-    componentDidMount() {
-        this.props.loadUser()
     }
 
     render() {
@@ -21,7 +18,7 @@ class Profile extends React.Component {
         if (user) {
             const date = user.created
             dateString = moment(date).format("MMMM YYYY")
-            console.log('profile user', user)
+            console.log('profile user', user._id)
             this.props.getRecipes(user)
         }
         return (<Spring
@@ -59,4 +56,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { logout, getRecipes, loadUser })(Profile)
+export default connect(mapStateToProps, { logout, getRecipes })(Profile)
