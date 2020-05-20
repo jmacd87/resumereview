@@ -18,6 +18,13 @@ const connection = mongoose.connection
 connection.once('open', () => {
     console.log("MongoDB connection established")
 })
+
+const recipesRouter = require('./routes/recipes')
+const usersRouter = require('./routes/users')
+
+app.use('/recipes', recipesRouter)
+app.use('/users', usersRouter)
+
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
     //set static folder
@@ -26,12 +33,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
-const recipesRouter = require('./routes/recipes')
-const usersRouter = require('./routes/users')
-
-app.use('/recipes', recipesRouter)
-app.use('/users', usersRouter)
-
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
