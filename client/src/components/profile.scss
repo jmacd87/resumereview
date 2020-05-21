@@ -1,3 +1,17 @@
+$breakpoint-phone: 375px;
+@media (max-width: $breakpoint-phone){
+  .profile{
+    max-width:350px !important;
+    padding-bottom: 20px!important;
+  }
+  .profileCard{
+    margin-top: 75%!important;
+    margin-left: -57%!important;
+  }
+}
+
+
+
 .profile{
     text-align: center;
     background-color: #2E4158;
@@ -8,13 +22,14 @@
   }
   .profileImage{
     padding: 40px;
+    margin-top: 10%;
   }
   .profileCard {
     text-align: left;
     padding-top: 60px;
-  }
-  .profileCard h3{
+    h3{
     margin-bottom: 5px;
+    }
   }
   .profileHeader{
     color: #9D9F9B;

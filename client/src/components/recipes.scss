@@ -1,3 +1,15 @@
+$breakpoint-phone: 375px;
+@media (max-width: $breakpoint-phone){
+  .errorMessage {
+    max-width: 350px !important;
+  }
+  .background{
+    min-width: 350px !important;
+  }
+}
+
+
+
 .background{
     background:#2E4158;
     min-width: 500px;
