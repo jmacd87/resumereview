@@ -19,6 +19,7 @@ $breakpoint-phone: 375px;
     }
     
   }
+
   .search-button{
     padding: 5px 10px !important;
   }
@@ -31,6 +32,10 @@ $breakpoint-phone: 375px;
     align-items: center;
     border-bottom: 1px solid rgb(214, 95, 95);
     z-index: 2;
+  }
+
+  .search-bar:focus{
+    z-index: 10 !important;
   }
   
   .search-bar{
