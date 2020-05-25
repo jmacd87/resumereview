@@ -8,6 +8,7 @@ $breakpoint-phone: 375px;
     img{
     margin-top: -25%!important;
     width:150px !important;
+    z-index: 0;
     }
     h1{
       padding-top: 150px;
@@ -26,6 +27,7 @@ $breakpoint-phone: 375px;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgb(214, 95, 95);
+    z-index: 1;
   }
   
   .search-bar{
@@ -35,6 +37,7 @@ $breakpoint-phone: 375px;
     padding: 10px;
     padding-bottom: 10px;
     border-radius: 5px 0px 0px 5px;
+    z-index: 1;
   }
   
   .search-button:hover{
@@ -69,7 +72,7 @@ $breakpoint-phone: 375px;
     border: none;
     border-radius: 0px 5px 5px 0px;
     padding: 10px 20px;
-  
+    z-index: 1;
     height: 100%;
     color: white;
     font-family: 'Roboto', sans-serif;
