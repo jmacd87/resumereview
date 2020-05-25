@@ -5,8 +5,11 @@ $breakpoint-phone: 375px;
 @media (max-width: $breakpoint-phone){
   .searchLanding{
     height: 58vh !important;
+    z-index: 0;
     img{
-    margin-top: -25%!important;
+    // margin-top: -25%!important;
+    position:absolute;
+    margin-top: -50px !important;
     width:150px !important;
     z-index: 0;
     }
@@ -118,7 +121,7 @@ $breakpoint-phone: 375px;
     margin-bottom: 15px;
   }
   img {
-    margin-top: -15%;
+   margin-top: -150px;
   }
 }
 
