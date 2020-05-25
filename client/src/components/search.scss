@@ -3,15 +3,18 @@
 
 $breakpoint-phone: 375px;
 @media (max-width: $breakpoint-phone){
+  .search-bar:focus {
+    margin-bottom: 200px !important;
+    z-index: 2000 !important;
+}
   .searchLanding{
     height: 58vh !important;
     z-index: 0;
     img{
     // margin-top: -25%!important;
-    position:absolute;
+    position:relative;
     margin-top: -50px !important;
     width:150px !important;
-    z-index: 0;
     }
     h1{
       padding-top: 150px;
@@ -19,9 +22,8 @@ $breakpoint-phone: 375px;
     }
     
   }
-
   .search-button{
-    padding: 5px 10px !important;
+    padding: 5px 5px !important;
   }
 }
 .search-form{
@@ -34,9 +36,7 @@ $breakpoint-phone: 375px;
     z-index: 2;
   }
 
-  .search-bar:focus{
-    z-index: 10 !important;
-  }
+  
   
   .search-bar{
     width: 65%;

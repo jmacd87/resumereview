@@ -89,7 +89,7 @@ const Search = () => {
         >
             {props => <div style={props}>
                 <div className='searchLanding'>
-                    <img id='landingImage' src="https://i2.wp.com/www.nutracart.com/wp-content/uploads/2019/01/Healthy-eating-icon.png?ssl=1" alt='' />
+                    <img src="https://i2.wp.com/www.nutracart.com/wp-content/uploads/2019/01/Healthy-eating-icon.png?ssl=1" alt='' />
                     <h1>Find your recipes now</h1>
                     {/* <div className="color-overlay"></div> */}
                 </div>
