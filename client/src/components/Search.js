@@ -48,11 +48,11 @@ const Search = () => {
     let content
 
     if (isLoaded) {
-        content = <Spring
+        content = <div className="background"><Spring
             from={{ opacity: 0, marginTop: 1500 }}
             to={{ opacity: 1, marginTop: 0 }}
         >
-            {props => <div className="background">
+            {props =>
                 <div className="recipes" style={props}>
                     {recipes.map(recipe => (
                         <Recipe
@@ -64,9 +64,10 @@ const Search = () => {
                             liked={recipe.recipe.liked} />
                     ))}
                 </div>
-            </div>
+
             }
         </Spring>
+        </div>
     } else {
         if (errorMessage) {
             content = <h1 className='errorMessage'>{errorMessage}</h1>
@@ -83,19 +84,20 @@ const Search = () => {
         }
     }
     if (!errorMessage && query === 'asdf') {
-        content = <Spring
+        content = <div className='searchLanding'><Spring
             from={{ opacity: 0, marginTop: 1500 }}
             to={{ opacity: 1, marginTop: 0 }}
         >
             {props => <div style={props}>
-                <div className='searchLanding'>
-                    <img src="https://i2.wp.com/www.nutracart.com/wp-content/uploads/2019/01/Healthy-eating-icon.png?ssl=1" alt='' />
-                    <h1>Find your recipes now</h1>
-                    {/* <div className="color-overlay"></div> */}
-                </div>
+
+                <img src="https://i2.wp.com/www.nutracart.com/wp-content/uploads/2019/01/Healthy-eating-icon.png?ssl=1" alt='' />
+                <h1>Find your recipes now</h1>
+                {/* <div className="color-overlay"></div> */}
             </div>
+
             }
         </Spring>
+        </div>
     }
 
     return (
