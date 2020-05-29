@@ -3,13 +3,24 @@ $breakpoint-phone: 375px;
   .profile{
     max-width:350px !important;
     padding-bottom: 20px!important;
+    width: 100%;
+  }
+  .profileImage img{
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 220px !important;
+
+  }
+  .profileImage{
+    padding: 50px !important;
   }
   .profileCard{
     margin-top: 75%!important;
-    margin-left: -57%!important;
+    margin-left: -60%!important;
   }
   .logout-button{
-    margin-right: 24px!important;
+    margin-left: -20px!important;
   }
 }
 
@@ -54,5 +65,5 @@ $breakpoint-phone: 375px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
     margin-top: 20px;
-    margin-left: 0px;
+    margin-right: 20px;
   }
