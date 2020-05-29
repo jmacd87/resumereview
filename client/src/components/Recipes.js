@@ -56,7 +56,7 @@ class Recipes extends React.Component {
                 content = <h1 className='errorMessage'>Add recipes to view here</h1>
             }
         } else {
-            content = <h1 className='errorMessage'>Please sign in to see recipes</h1>
+            content = <h2 className='errorMessage'>Please sign in <br />to see recipes</h2>
         }
 
         return (

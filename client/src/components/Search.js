@@ -10,7 +10,7 @@ const Search = () => {
 
     const [recipes, setRecipes] = useState([])
     const [search, setSearch] = useState('')
-    const [query, setQuery] = useState('asdf')
+    const [query, setQuery] = useState('')
     const [isLoaded, setIsLoaded] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -22,14 +22,14 @@ const Search = () => {
 
             setRecipes(data.hits)
 
-            if (data.hits.length === 0) {
+            if (query !== '' && data.hits.length === 0) {
                 setErrorMessage('No results found, please try again')
             } else {
                 setErrorMessage('')
                 setSearch('')
                 setIsLoaded(true)
             }
-            if (query === 'asdf') {
+            if (query === '') {
                 setErrorMessage('')
             }
 
@@ -70,7 +70,9 @@ const Search = () => {
         </div>
     } else {
         if (errorMessage) {
-            content = <h1 className='errorMessage'>{errorMessage}</h1>
+            content = <div className="background">
+                <h1 className='errorMessage'>{errorMessage}</h1>
+            </div>
         } else {
             content = <div className='errorMessage'>
                 <Loader
@@ -83,7 +85,7 @@ const Search = () => {
 
         }
     }
-    if (!errorMessage && query === 'asdf') {
+    if (!errorMessage && query === '') {
         content = <div className='searchLanding'><Spring
             from={{ opacity: 0, marginTop: 1500 }}
             to={{ opacity: 1, marginTop: 0 }}
