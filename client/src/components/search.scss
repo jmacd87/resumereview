@@ -5,7 +5,17 @@ $breakpoint-phone: 375px;
 @media (max-width: $breakpoint-phone){
   
   .searchLanding{
+<<<<<<< Updated upstream
     height: 55vh !important;
+=======
+    height: 58vh !important;
+    z-index: 0;
+    img{
+    // margin-top: -25%!important;
+    position:absolute;
+    margin-top: -50px !important;
+    width:150px !important;
+>>>>>>> Stashed changes
     z-index: 0;
     img{
     // margin-top: -25%!important;
@@ -119,7 +129,11 @@ $breakpoint-phone: 375px;
     margin-bottom: 15px;
   }
   img {
+<<<<<<< Updated upstream
   //  margin-top: -150px;
+=======
+   margin-top: -150px;
+>>>>>>> Stashed changes
   }
 }
 
