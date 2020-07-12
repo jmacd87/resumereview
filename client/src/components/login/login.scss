@@ -1,14 +1,16 @@
 .App__Aside {
     /* width: 100%; */
-    background-color:rgb(214, 95, 95);
+    background-color:#6C63FF;
   }
   .AuthForm {
     height: 100%;
     display: flex;
     color: white;
+    background: rgb(76,93,114);
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    padding-bottom: 15%;
   }
   .App__Form {
     width: 40%;
@@ -47,7 +49,7 @@
   }
   
   .PageSwitcher__Item--Active {
-    background-color: rgb(214, 95, 95);
+    background-color: #6C63FF;
     color: white;
   }
   
@@ -72,7 +74,7 @@
   }
   
   .FormTitle__Link {
-    color: #707C8B;
+    color: #6C63FF;
     text-decoration: none;
     display: inline-block;
     font-size: 1.7em;
@@ -86,7 +88,7 @@
   
   .FormTitle__Link--Active {
     color: white;
-    border-bottom: 1px solid rgba(214, 95, 95, 0.918);
+    border-bottom: 1px solid #6C63FF;
   }
   
   .FormField {
@@ -104,7 +106,7 @@
     background-color: rgb(55, 75, 99);
     border-radius: 15px;
     border: none;
-    color: rgba(214, 95, 95, 0.918);
+    color: #6C63FF;
     outline: none;
     border-bottom: 1px solid #445366;
     font-size: 1em;
@@ -124,17 +126,18 @@
   }
 
   .FormField__Button {
-    background-color:  rgb(214, 95, 95);
+    background-color:  #6C63FF;
     color: white;
     border: none;
     outline: none;
     border-radius: 25px;
-    padding: 15px 70px;
+    padding: 10px 70px;
     font-size: .8em;
     font-weight: 500;
+    align-items: center;
   }
   .FormField__Button:hover {
-    background-color:  rgb(212, 56, 56);
+    background-color:  #6C63FF;
     cursor:pointer;
   }
   input:-webkit-autofill,
@@ -142,10 +145,10 @@
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
       transition: background-color 5000s ease-in-out 0s;
-      -webkit-text-fill-color: rgba(214, 95, 95, 0.918) !important;
+      -webkit-text-fill-color: #6C63FF !important;
   }
   .FormField__Link {
-    color: #66707D;
+    color: #6C63FF;
     text-decoration: none;
     display: inline-block;
     border-bottom: 1.5px solid #225E62;
@@ -164,7 +167,7 @@
   
   .FormField__TermsLink {
     color: white;
-    border-bottom: 1px solid rgba(214, 95, 95, 0.918);
+    border-bottom: 1px solid #6C63FF;
     text-decoration: none;
     display: inline-block;
     padding-bottom: 2px;

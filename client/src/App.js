@@ -2,13 +2,12 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import login from './components/login/login';
 import register from './components/login/register';
-import profile from './components/Profile';
-import home from './components/Homepage'
-import recipes from './components/Recipes'
+import profile from './components/profile/Profile';
+import home from './components/Home/Home'
 import { Provider } from 'react-redux'
 import store from './store'
 import './App.css'
-import Header from './components/Header'
+import Header from './components/header/Header'
 import { loadUser } from './actions/authActions'
 
 class App extends React.Component {
@@ -22,12 +21,10 @@ class App extends React.Component {
         <div className="App">
           <Router>
             <Header />
-            <Route path="/sign-in" component={login} />
-            <Route path="/sign-up" component={register} />
+            <Route path="/signin" component={login} />
+            <Route path="/signup" component={register} />
             <Route path="/profile" component={profile} />
             <Route exact path="/" component={home} />
-            <Route path="/search" component={home} />
-            <Route path="/recipes" component={recipes} />
           </Router>
         </div>
       </Provider>

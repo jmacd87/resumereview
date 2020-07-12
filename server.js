@@ -2,10 +2,11 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const path = require('path')
-require('dotenv').config()
-
+const upload = require('./upload')
 const app = express()
 const port = process.env.PORT || 5000
+
+require('dotenv').config()
 
 app.use(cors())
 app.use(express.json())
@@ -24,6 +25,7 @@ const usersRouter = require('./routes/users')
 
 app.use('/recipes', recipesRouter)
 app.use('/users', usersRouter)
+app.post('/upload', upload)
 
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

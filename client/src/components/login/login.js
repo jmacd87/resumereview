@@ -77,8 +77,8 @@ class Login extends Component {
                         {!this.state.isLoading ?
                             <div className="App__Form">
                                 <div className="PageSwitcher">
-                                    <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                                    <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+                                    <NavLink to="/signin" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+                                    <NavLink to="/signup" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
                                 </div>
                                 <div className="FormCenter" style={props}>
                                     <div className="FormTitle">
@@ -106,7 +106,7 @@ class Login extends Component {
                             : <div className='errorMessage'>
                                 <Loader
                                     type="ThreeDots"
-                                    color="rgb(214, 95, 95)"
+                                    color="#6C63FF"
                                     height={100}
                                     width={100}
                                     timeout={3000} />

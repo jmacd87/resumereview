@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222831;
+    color: #6C63FF;
+    border-bottom: solid 2px #6C63FF;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    letter-spacing: 3px;
+
+}
+
+.icon {
+    padding-right: 20px;
+    align-items: center;
+}
+.businessName{
+  text-decoration: none;
+  color: #6C63FF;
+}
+.bm-item {
+    display: inline-block;
+  
+    /* Our sidebar item styling */
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #6C63FF;
+    transition: color 0.2s;
+  }
+  
+  .bm-item:hover {
+    color: #d1d1d1;
+  }
+  
+  .bm-burger-button {
+    position: fixed;
+    width: 30px;
+    height: 25px;
+    right: 36px;
+    top: 28px;
+  }
+  
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #6C63FF;
+    border-radius: 5px;
+  }
+  
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #6C63FF;
+    &:hover{
+      background: #d1d1d1;
+    }
+  }
+
+  
+  /* General sidebar styles */
+  .bm-menu {
+    background: #222831;
+    padding: 3em 2em 0;
+    font-size: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    padding-left: 70px;
+    overflow: hidden !important;
+  }
+  .bm-item {
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+  }
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+  }
+  
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    left: 0;
+    padding-left: 20px;
+    top: 0;
+    opacity: 0;
+  }
+
+  .bm-menu-wrap{
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-left: -30px;
+      
+  }
+
+  .avatarIcon{
+    padding-left: 15px;
+    width: 50px;
+    padding-top: 5px;
+    border-radius: 25px;
+    // margin-right: 20px;
+    // margin-bottom: -45px;
+    // padding-top: -20px;
+    // padding-bottom: -20px;
+}
