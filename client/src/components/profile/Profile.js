@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import * as moment from 'moment'
 import { logout, loadUser } from '../../actions/authActions'
 import { Spring } from 'react-spring/renderprops'
-import Upload from './upload'
+import FileUpload from './FileUpload'
 
 class Profile extends React.Component {
     static propTypes = {
@@ -31,18 +31,19 @@ class Profile extends React.Component {
                         <div className='profile'>
                             <div className='profileImage'>
                                 <a href="https://imgbb.com/"><img src="https://i.ibb.co/2g2zJRS/profileavatar.png" alt="profileavatar" border="0" /></a>
-                            </div>
-                            <div className='profileCard'>
-                                <h3 className='profileHeader'>Name: </h3>
-                                <span className='profileInfo'>{user.first_name} {user.last_name}</span>
-                                <h3 className='profileHeader'>Email:</h3>
-                                <span className='profileInfo'>{user.email}</span>
-                                <h3 className='profileHeader'>User since:</h3>
-                                <span className='profileInfo'>{dateString}</span>
-                                <Upload />
-                            </div>
-                            <button className='logout-button' onClick={this.props.logout}>Logout</button>
 
+
+                                <div className='profileCard'>
+                                    <h3 className='profileHeader'>Name: <span className='profileInfo'>{user.first_name} {user.last_name}</span> </h3>
+
+                                    <h3 className='profileHeader'>Email: <span className='profileInfo'>{user.email}</span></h3>
+
+                                    <h3 className='profileHeader'>User since: <span className='profileInfo'>{dateString}</span></h3>
+
+                                    <button className='logout-button' onClick={this.props.logout}>Logout</button>
+                                </div>
+                                <FileUpload />
+                            </div>
                         </div>
                         : this.props.history.push('/')}
 

@@ -1,22 +1,17 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import React, { Component } from "react";
-import "./progress.scss";
-
-class Progress extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    render() {
-        return (
-            <div className="ProgressBar">
-                <div
-                    className="Progress"
-                    style={{ width: this.props.progress + "%" }}
-                />
+const Progress = ({ percentage }) => {
+    return (
+        <div className="progress mb-4">
+            <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style={{ width: `${percentage}%` }}>
+                {percentage}%
             </div>
-        );
-    }
+        </div>
+    )
+}
+Progress.propTypes = {
+    percentage: PropTypes.number.isRequired
 }
 
 export default Progress

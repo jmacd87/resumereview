@@ -15,7 +15,7 @@ class Header extends React.Component {
     auth: PropTypes.object.isRequired
   }
   render() {
-    const { isAuthenticated, user } = this.props.auth
+    const { isAuthenticated } = this.props.auth
     return (
 
       <header className='header'>

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 // import 'whatwg-fetch';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './home.scss'
 // import { pic } from './signup.png'
 class Home extends Component {
